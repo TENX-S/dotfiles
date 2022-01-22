@@ -36,7 +36,13 @@ set selectmode=mouse,key
 set encoding=utf-8
 set ffs=unix,dos,mac
 set termencoding=utf-8
-set guifont=Jetbrains\ Mono:h13,Hack\ NF:h13
+if has('win32')
+  set guifont=Jetbrains\ Mono:h13,Hack\ Nerd\ Font:h13
+elseif has('unix')
+  set guifont=Jetbrains\ Mono:h19,Hack\ Nerd\ Font:h19
+elseif has('macunix')
+  set guifont=Jetbrains\ Mono:h17,Hack\ Nerd\ Font:h17
+endif
 
 call plug#begin('~/.vim/plugged')
 Plug 'sheerun/vim-polyglot'
@@ -51,7 +57,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'wakatime/vim-wakatime'
-if has('linux')
+if has('unix')
   Plug 'ryanoasis/vim-devicons'
 endif
 Plug 'tpope/vim-surround'
@@ -99,7 +105,6 @@ function! s:show_documentation()
   endif
 endfunction
 
-
 " Mappings for CoCList
 " Show all diagnostics.
 nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
@@ -121,13 +126,21 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 " colorscheme gruvbox-material
 colorscheme everforest
 
-let g:floaterm_shell="pwsh.exe"
+if has('win32')
+  let g:floaterm_shell="pwsh.exe"
+elseif has('unix')
+  let g:floaterm_shell="/usr/bin/zsh"
+elseif has('macunix')
+  let g:floaterm_shell="/bin/zsh"
+endif
 
 let g:NERDTreeWinPos="right"
 let NERDTreeShowHidden=1
  
 " let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6  }  }
-let g:fzf_preview_window = [] " Preview window is broken on windows
+if has('win32')
+  let g:fzf_preview_window = [] " Preview window is broken on windows
+endif
 
 " let g:gruvbox_material_background='soft'
 let g:everforest_background='hard'
@@ -145,10 +158,11 @@ let g:neovide_no_idle=v:true
 " let g:neovide_transparency=0.7
 let g:neovide_refresh_rate=360
 let g:neovide_fullscreen=v:false
-let g:neovide_cursor_antialiasing=v:true
+let g:neovide_cursor_antialiasing=v:false
 let g:neovide_cursor_vfx_mode="torpedo"
 let g:neovide_remember_window_size=v:true
 
+" let g:airline_theme='violet'
 " let g:airline_theme = 'gruvbox_material'
 let g:airline_theme = 'everforest'
 let g:airline#extensions#coc#enabled=0
@@ -162,7 +176,6 @@ let g:airline#extensions#tabline#show_tab_type=1
 let g:airline#extensions#tabline#buffers_label='B'
 let g:airline#extensions#tabline#formatter='unique_tail'
 let g:airline#extensions#tabline#switch_buffers_and_tabs=1
-" let g:airline_theme='violet'
 
 let g:neoformat_cpp_clangformat = {
     \ 'exe': 'clang-format',

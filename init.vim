@@ -38,10 +38,10 @@ set ffs=unix,dos,mac
 set termencoding=utf-8
 if has('win32')
   set guifont=Jetbrains\ Mono:h13,Hack\ Nerd\ Font:h13
-elseif has('unix')
-  set guifont=Jetbrains\ Mono:h19,Hack\ Nerd\ Font:h19
 elseif has('macunix')
   set guifont=Jetbrains\ Mono:h17,Hack\ Nerd\ Font:h17
+elseif has('unix')
+  set guifont=Jetbrains\ Mono:h19,Hack\ Nerd\ Font:h19
 endif
 
 call plug#begin('~/.vim/plugged')
@@ -57,7 +57,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'wakatime/vim-wakatime'
-if has('unix')
+if !has('macunix') && !has('win32')
   Plug 'ryanoasis/vim-devicons'
 endif
 Plug 'tpope/vim-surround'

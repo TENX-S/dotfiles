@@ -15,7 +15,7 @@ set so=7
 set tabstop=4
 set shiftwidth=4
 set ruler
-set cmdheight=2
+set cmdheight=1
 set autoindent
 set autoread
 au FocusGained,BufEnter * checktime
@@ -39,7 +39,7 @@ set termencoding=utf-8
 if has('win32')
   set guifont=Jetbrains\ Mono:h13,Hack\ Nerd\ Font:h13
 elseif has('macunix')
-  set guifont=Jetbrains\ Mono:h17,Hack\ Nerd\ Font:h17
+  set guifont=Jetbrains\ Mono:h18,Hack\ Nerd\ Font:h18
 elseif has('unix')
   set guifont=Jetbrains\ Mono:h19,Hack\ Nerd\ Font:h19
 endif
@@ -157,7 +157,7 @@ let g:everforest_ui_contrast = 'high'
 let g:neovide_no_idle=v:true
 " let g:neovide_transparency=0.7
 let g:neovide_refresh_rate=360
-let g:neovide_fullscreen=v:false
+let g:neovide_fullscreen=v:true
 let g:neovide_cursor_antialiasing=v:false
 let g:neovide_cursor_vfx_mode="torpedo"
 let g:neovide_remember_window_size=v:true

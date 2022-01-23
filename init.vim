@@ -157,7 +157,7 @@ let g:everforest_ui_contrast = 'high'
 let g:neovide_no_idle=v:true
 " let g:neovide_transparency=0.7
 let g:neovide_refresh_rate=360
-let g:neovide_fullscreen=v:true
+let g:neovide_fullscreen=v:false
 let g:neovide_cursor_antialiasing=v:false
 let g:neovide_cursor_vfx_mode="torpedo"
 let g:neovide_remember_window_size=v:true
@@ -207,9 +207,12 @@ nmap <leader>yl @a<cr>
 nmap <leader>lp @a<cr> 
 nmap <leader>ya @y<cr> 
 nmap <leader>ap @p<cr>
-nmap <space>e :CocCommand explorer --preset right<CR>
-nmap <space>ef :CocCommand explorer --preset floating<CR>
+nmap <space>e :CocCommand explorer --preset right<cr>
+nmap <space>ef :CocCommand explorer --preset floating<cr>
+nmap <space>t :FloatermNew<cr>
+nmap <space><C-t> :FloatermToggle<cr>
 inoremap ff <Esc>`^
+tnoremap <Esc> <C-\><C-n>:FloatermToggle<CR>
 
 map <C-t> :NERDTreeToggle<CR>
 function! Checksemicolon()

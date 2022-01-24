@@ -138,8 +138,8 @@ endif
 let g:NERDTreeWinPos="right"
 let NERDTreeShowHidden=1
 
-let g:floaterm_width="0.77"
-let g:floaterm_height="0.77"
+let g:floaterm_width=0.67
+let g:floaterm_height=0.87
  
 " let g:fzf_layout={ 'window': { 'width': 0.9, 'height': 0.6  }  }
 if has('win32')

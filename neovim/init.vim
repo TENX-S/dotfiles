@@ -146,6 +146,7 @@ endif
 " let g:gruvbox_material_background='soft'
 let g:everforest_background='hard'
 let g:everforest_ui_contrast = 'high'
+let g:everforest_better_performance = 1
 "let g:everforest_transparent_background=1
 
 " let g:gruvbox_bold=0
@@ -190,8 +191,8 @@ augroup fmt
 augroup END
 
 let mapleader=','
-let @a='V"+y'
-let @b='V"+p'
+let @a='"+y'
+let @b='"+p'
 let @y='ggVG"+y'
 let @p='ggVG"+p'
 nmap <leader>s :w!<cr>
@@ -204,10 +205,10 @@ nmap <leader>w :bn<cr>
 nmap <leader>p :bp<cr>
 nmap <leader>f :Files<cr>
 nmap <leader>rn <Plug>(coc-rename)
-nmap <leader>yl @a<cr> 
-nmap <leader>lp @a<cr> 
 nmap <leader>ya @y<cr> 
 nmap <leader>ap @p<cr>
+nmap <space><C-y> @a<cr> 
+nmap <space><C-p> @b<cr> 
 nmap <space>e :CocCommand explorer --preset right<cr>
 nmap <space>ef :CocCommand explorer --preset floating<cr>
 nmap <space>t :FloatermNew<cr>

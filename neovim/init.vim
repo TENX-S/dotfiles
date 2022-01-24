@@ -137,17 +137,20 @@ endif
 
 let g:NERDTreeWinPos="right"
 let NERDTreeShowHidden=1
+
+let g:floaterm_width="0.77"
+let g:floaterm_height="0.77"
  
-" let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6  }  }
+" let g:fzf_layout={ 'window': { 'width': 0.9, 'height': 0.6  }  }
 if has('win32')
-  let g:fzf_preview_window = [] " Preview window is broken on windows
+  let g:fzf_preview_window=[] " Preview window is broken on windows
 endif
 
 " let g:gruvbox_material_background='soft'
 let g:everforest_background='hard'
-let g:everforest_ui_contrast = 'high'
-let g:everforest_better_performance = 1
-let g:everforest_disable_italic_comment = 1
+let g:everforest_ui_contrast='high'
+let g:everforest_better_performance=1
+let g:everforest_disable_italic_comment=1
 "let g:everforest_transparent_background=1
 
 " let g:gruvbox_bold=0
@@ -166,25 +169,25 @@ let g:neovide_cursor_vfx_mode="torpedo"
 let g:neovide_remember_window_size=v:true
 
 " let g:airline_theme='violet'
-" let g:airline_theme = 'gruvbox_material'
-let g:airline_theme = 'everforest'
+" let g:airline_theme='gruvbox_material'
+let g:airline_theme='everforest'
 let g:airline#extensions#coc#enabled=0
 let g:airline#extensions#tabline#enabled=1
-let g:airline#extensions#coc#error_symbol = 'Error:'
-let g:airline#extensions#coc#warning_symbol = 'Warning:'
-let g:airline#extensions#coc#stl_format_err = '%E{[%e(#%fe)]}'
-let g:airline#extensions#coc#stl_format_warn = '%W{[%w(#%fw)]}'
+let g:airline#extensions#coc#error_symbol='Error:'
+let g:airline#extensions#coc#warning_symbol='Warning:'
+let g:airline#extensions#coc#stl_format_err='%E{[%e(#%fe)]}'
+let g:airline#extensions#coc#stl_format_warn='%W{[%w(#%fw)]}'
 let g:airline#extensions#tabline#tabs_label='T'
 let g:airline#extensions#tabline#show_tab_type=0
 let g:airline#extensions#tabline#buffers_label='B'
 let g:airline#extensions#tabline#formatter='unique_tail'
 let g:airline#extensions#tabline#switch_buffers_and_tabs=1
 
-let g:neoformat_cpp_clangformat = {
+let g:neoformat_cpp_clangformat={
     \ 'exe': 'clang-format',
     \ 'args': ['-i']}
-let g:neoforat_enabled_cpp = ['clangformat']
-let g:neoforat_enabled_c = ['clangformat']
+let g:neoforat_enabled_cpp=['clangformat']
+let g:neoforat_enabled_c=['clangformat']
 
 augroup fmt
   autocmd!
@@ -214,6 +217,8 @@ nmap <space>e :CocCommand explorer --preset right<cr>
 nmap <space>ef :CocCommand explorer --preset floating<cr>
 nmap <space>t :FloatermNew<cr>
 nmap <space><C-t> :FloatermToggle<cr>
+nmap <space><C-n> :FloatermNext<cr>
+nmap <space><C-p> :FloatermPrev<cr>
 inoremap ff <Esc>`^
 tnoremap <Esc> <C-\><C-n>:FloatermToggle<CR>
 
@@ -238,7 +243,7 @@ endfunction
 call SetupCommandAlias("W", "w")
 call SetupCommandAlias("Q", "q")
 
-let g:coc_explorer_global_presets = {
+let g:coc_explorer_global_presets={
 \   'floating': {
 \     'position': 'floating',
 \     'open-action-strategy': 'sourceWindow',
@@ -250,12 +255,12 @@ let g:coc_explorer_global_presets = {
 \ }
 
 lua <<EOF
-vim.opt.list = true
+vim.opt.list=true
 vim.opt.listchars:append("space:⋅")
 
 require("indent_blankline").setup {
-    space_char_blankline = " ",
-    show_current_context = true,
-    show_current_context_start = true,
+    space_char_blankline=" ",
+    show_current_context=true,
+    show_current_context_start=true,
 }
 EOF

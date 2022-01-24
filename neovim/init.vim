@@ -128,7 +128,7 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 colorscheme everforest
 
 if has('win32')
-  let g:floaterm_shell="pwsh.exe"
+  let g:floaterm_shell="pwsh.exe --nologo"
 elseif has('macunix')
   let g:floaterm_shell="/bin/zsh"
 elseif has('unix')

@@ -17,3 +17,5 @@
 	unstage = reset HEAD --
 	mg = merge
 	rb = rebase
+[core]
+	editor = neovide --nofork

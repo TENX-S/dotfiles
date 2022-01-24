@@ -147,6 +147,7 @@ endif
 let g:everforest_background='hard'
 let g:everforest_ui_contrast = 'high'
 let g:everforest_better_performance = 1
+let g:everforest_disable_italic_comment = 1
 "let g:everforest_transparent_background=1
 
 " let g:gruvbox_bold=0
@@ -174,7 +175,7 @@ let g:airline#extensions#coc#warning_symbol = 'Warning:'
 let g:airline#extensions#coc#stl_format_err = '%E{[%e(#%fe)]}'
 let g:airline#extensions#coc#stl_format_warn = '%W{[%w(#%fw)]}'
 let g:airline#extensions#tabline#tabs_label='T'
-let g:airline#extensions#tabline#show_tab_type=1
+let g:airline#extensions#tabline#show_tab_type=0
 let g:airline#extensions#tabline#buffers_label='B'
 let g:airline#extensions#tabline#formatter='unique_tail'
 let g:airline#extensions#tabline#switch_buffers_and_tabs=1
@@ -196,7 +197,7 @@ let @b='"+p'
 let @y='ggVG"+y'
 let @p='ggVG"+p'
 nmap <leader>s :w!<cr>
-nmap <leader>h :noh<cr>
+nmap <space><C-h> :noh<cr>
 nmap <leader>q :xa<cr>
 nmap <leader>x :x<cr>
 nmap <leader>sv :source $MYVIMRC<cr>

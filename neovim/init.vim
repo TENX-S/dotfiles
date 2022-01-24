@@ -15,7 +15,7 @@ set so=7
 set tabstop=4
 set shiftwidth=4
 set ruler
-set cmdheight=1
+set cmdheight=2
 set autoindent
 set autoread
 au FocusGained,BufEnter * checktime
@@ -64,6 +64,7 @@ Plug 'tpope/vim-surround'
 Plug 'andymass/vim-matchup'
 Plug 'sainnhe/everforest'
 Plug 'voldikss/vim-floaterm'
+Plug 'lukas-reineke/indent-blankline.nvim'
 call plug#end()
 
 " Use `[g` and `]g` to navigate diagnostics
@@ -245,3 +246,14 @@ let g:coc_explorer_global_presets = {
 \     'open-action-strategy': 'sourceWindow',
 \   }
 \ }
+
+lua <<EOF
+vim.opt.list = true
+vim.opt.listchars:append("space:⋅")
+
+require("indent_blankline").setup {
+    space_char_blankline = " ",
+    show_current_context = true,
+    show_current_context_start = true,
+}
+EOF

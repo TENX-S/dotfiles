@@ -217,8 +217,8 @@ nmap <space>e :CocCommand explorer --preset right<cr>
 nmap <space>ef :CocCommand explorer --preset floating<cr>
 nmap <space>t :FloatermNew<cr>
 nmap <space><C-t> :FloatermToggle<cr>
-nmap <space><C-n> :FloatermNext<cr>
-nmap <space><C-p> :FloatermPrev<cr>
+" nmap <space><C-n> :FloatermNext<cr>
+" nmap <space><C-p> :FloatermPrev<cr>
 inoremap ff <Esc>`^
 tnoremap <Esc> <C-\><C-n>:FloatermToggle<CR>
 

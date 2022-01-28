@@ -36,13 +36,13 @@ set selectmode=mouse,key
 set encoding=utf-8
 set ffs=unix,dos,mac
 set termencoding=utf-8
-if has('win32')
-  set guifont=Jetbrains\ Mono:h13,Hack\ Nerd\ Font:h13
-elseif has('macunix')
-  set guifont=Jetbrains\ Mono:h18,Hack\ Nerd\ Font:h18
-elseif has('unix')
-  set guifont=Jetbrains\ Mono:h19,Hack\ Nerd\ Font:h19
-endif
+" if has('win32')
+"   set guifont=JetbrainsMono\ NF:h13
+" elseif has('macunix')
+"   set guifont=Jetbrains\ Mono:h18,Hack\ Nerd\ Font:h18
+" elseif has('unix')
+"   set guifont=Jetbrains\ Mono:h19,Hack\ Nerd\ Font:h19
+" endif
 
 call plug#begin('~/.vim/plugged')
 Plug 'sheerun/vim-polyglot'
@@ -57,9 +57,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'wakatime/vim-wakatime'
-if !has('macunix') && !has('win32') " fallback font only works on linux
-  Plug 'ryanoasis/vim-devicons'
-endif
+Plug 'ryanoasis/vim-devicons'
 Plug 'tpope/vim-surround'
 Plug 'andymass/vim-matchup'
 Plug 'sainnhe/everforest'

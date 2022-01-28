@@ -36,13 +36,6 @@ set selectmode=mouse,key
 set encoding=utf-8
 set ffs=unix,dos,mac
 set termencoding=utf-8
-" if has('win32')
-"   set guifont=JetbrainsMono\ NF:h13
-" elseif has('macunix')
-"   set guifont=Jetbrains\ Mono:h18,Hack\ Nerd\ Font:h18
-" elseif has('unix')
-"   set guifont=Jetbrains\ Mono:h19,Hack\ Nerd\ Font:h19
-" endif
 
 call plug#begin('~/.vim/plugged')
 Plug 'sheerun/vim-polyglot'
@@ -215,8 +208,6 @@ nmap <space>e :CocCommand explorer --preset right<cr>
 nmap <space>ef :CocCommand explorer --preset floating<cr>
 nmap <space>t :FloatermNew<cr>
 nmap <space><C-t> :FloatermToggle<cr>
-" nmap <space><C-n> :FloatermNext<cr>
-" nmap <space><C-p> :FloatermPrev<cr>
 inoremap ff <Esc>`^
 tnoremap <Esc> <C-\><C-n>:FloatermToggle<CR>
 

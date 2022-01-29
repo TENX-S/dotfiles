@@ -3,8 +3,8 @@ Import-Module posh-git
 Import-Module Terminal-Icons
 # Import-Module PSReadLine
 Import-Module PSFzf
-Set-PoshPrompt M365Princess
-clear
+Set-PoshPrompt pure
+
 $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
 if (Test-Path($ChocolateyProfile)) {
   Import-Module "$ChocolateyProfile"
@@ -53,9 +53,13 @@ Function which ($command) {
     Get-Command -Name $command -ErrorAction SilentlyContinue | 
         Select-Object -ExpandProperty Path -ErrorAction SilentlyContinue
 }
-Function proxy {
+Function setproxy {
     $env:HTTPS_PROXY="http://127.0.0.1:10809"
     $env:HTTP_PROXY="http://127.0.0.1:10809"
+}
+Function unsetproxy {
+    $env:HTTPS_PROXY=""
+    $env:HTTP_PROXY=""
 }
 Set-Alias vim nvim
 Set-Alias tk tokei

@@ -1,6 +1,7 @@
 syntax on
 filetype plugin indent on
 " autocmd VimEnter * NERDTree | wincmd p
+au FocusGained,BufEnter * checktime
 
 if has('termguicolors')
   set termguicolors
@@ -18,7 +19,6 @@ set ruler
 set cmdheight=2
 set autoindent
 set autoread
-au FocusGained,BufEnter * checktime
 set cindent
 set cursorline
 set showcmd
@@ -41,10 +41,10 @@ call plug#begin('~/.vim/plugged')
 Plug 'sheerun/vim-polyglot'
 Plug 'morhetz/gruvbox'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'preservim/nerdtree'
+" Plug 'preservim/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'sainnhe/gruvbox-material'
-Plug 'jiangmiao/auto-pairs'
+" Plug 'jiangmiao/auto-pairs'
 Plug 'sbdchd/neoformat'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -205,7 +205,7 @@ nmap <leader>ap @p<cr>
 nmap <space><C-y> @a<cr> 
 nmap <space><C-p> @b<cr> 
 nmap <space>e :CocCommand explorer --preset right<cr>
-nmap <space>ef :CocCommand explorer --preset floating<cr>
+nmap <space><C-f> :CocCommand explorer --preset floating<cr>
 nmap <space>t :FloatermNew<cr>
 nmap <space><C-t> :FloatermToggle<cr>
 inoremap ff <Esc>`^

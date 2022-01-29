@@ -1,7 +1,7 @@
 syntax on
 filetype plugin indent on
-" autocmd VimEnter * NERDTree | wincmd p
 au FocusGained,BufEnter * checktime
+" autocmd VimEnter * NERDTree | wincmd p
 
 if has('termguicolors')
   set termguicolors
@@ -41,10 +41,8 @@ call plug#begin('~/.vim/plugged')
 Plug 'sheerun/vim-polyglot'
 Plug 'morhetz/gruvbox'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Plug 'preservim/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'sainnhe/gruvbox-material'
-" Plug 'jiangmiao/auto-pairs'
 Plug 'sbdchd/neoformat'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -56,14 +54,14 @@ Plug 'andymass/vim-matchup'
 Plug 'sainnhe/everforest'
 Plug 'voldikss/vim-floaterm'
 Plug 'lukas-reineke/indent-blankline.nvim'
+Plug 'tpope/vim-fugitive'
+" Plug 'preservim/nerdtree'
+" Plug 'jiangmiao/auto-pairs'
 call plug#end()
 
-" Use `[g` and `]g` to navigate diagnostics
-" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
-" Use `TAB` to autocomplete
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
@@ -75,18 +73,14 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-" Make <CR> auto-select the first completion item and notify coc.nvim to
-" format on enter, <cr> could be remapped by other vim plugin
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
-" GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
-" Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
@@ -97,26 +91,16 @@ function! s:show_documentation()
   endif
 endfunction
 
-" Mappings for CoCList
-" Show all diagnostics.
 nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
-" Manage extensions.
-" nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
-" Show commands.
 nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
-" Find symbol of current document.
 nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
-" Search workspace symbols.
 nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
-" Do default action for next item.
 nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
-" Do default action for previous item.
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
-" Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
-" colorscheme gruvbox-material
 colorscheme everforest
+" colorscheme gruvbox-material
 
 if has('win32')
   let g:floaterm_shell="pwsh.exe --nologo"
@@ -126,18 +110,20 @@ elseif has('unix')
   let g:floaterm_shell="/usr/bin/zsh"
 endif
 
-let g:NERDTreeWinPos="right"
-let NERDTreeShowHidden=1
+" let g:NERDTreeWinPos="right"
+" let NERDTreeShowHidden=1
+" map <C-t> :NERDTreeToggle<CR>
 
 let g:floaterm_width=0.67
 let g:floaterm_height=0.87
  
-" let g:fzf_layout={ 'window': { 'width': 0.9, 'height': 0.6  }  }
 if has('win32')
   let g:fzf_preview_window=[] " Preview window is broken on windows
 endif
+" let g:fzf_layout={ 'window': { 'width': 0.9, 'height': 0.6  }  }
 
 " let g:gruvbox_material_background='soft'
+
 let g:everforest_background='hard'
 let g:everforest_ui_contrast='high'
 let g:everforest_better_performance=1
@@ -180,10 +166,10 @@ let g:neoformat_cpp_clangformat={
 let g:neoforat_enabled_cpp=['clangformat']
 let g:neoforat_enabled_c=['clangformat']
 
-augroup fmt
-  autocmd!
-  autocmd BufWritePre * undojoin | Neoformat
-augroup END
+" augroup fmt
+"   autocmd!
+"   autocmd BufWritePre * undojoin | Neoformat
+" augroup END
 
 let mapleader=','
 let @a='"+y'
@@ -208,10 +194,10 @@ nmap <space>e :CocCommand explorer --preset right<cr>
 nmap <space><C-f> :CocCommand explorer --preset floating<cr>
 nmap <space>t :FloatermNew<cr>
 nmap <space><C-t> :FloatermToggle<cr>
+nmap <space>m :Neoformat<cr>
 inoremap ff <Esc>`^
 tnoremap <Esc> <C-\><C-n>:FloatermToggle<CR>
 
-map <C-t> :NERDTreeToggle<CR>
 function! Checksemicolon()
   :normal $
   if getline(".")[col(".")-1] == ';'

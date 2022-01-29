@@ -1,8 +1,10 @@
 {
+	"clangd.checkUpdates": true,
 	"codeLens.enable": true,
 	"rust-analyzer.updates.checkOnStartup": false,
 	"rust-analyzer.cargo.runBuildScripts": true,
 	"rust-analyzer.procMacro.enable": true,
+	"rust-analyzer.checkOnSaveCommand": "fmt",
 	"rust-analyzer.server.path": "D:\\Programs\\_SDK\\ra\\rust-analyzer.exe",
 	"explorer.icon.enableNerdfont": true,
 	"explorer.file.showHiddenFiles": true

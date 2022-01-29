@@ -17,5 +17,6 @@
 	unstage = reset HEAD --
 	mg = merge
 	rb = rebase
+	ck = cherry-pick
 [core]
 	editor = neovide --nofork

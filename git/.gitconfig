@@ -12,7 +12,8 @@
 	co = checkout
 	br = branch
 	ci = commit
-	st = status
+	st = status -s
+	df = diff
 	last = log -1 HEAD
 	unstage = reset HEAD --
 	mg = merge

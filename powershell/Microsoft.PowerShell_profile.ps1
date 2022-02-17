@@ -27,6 +27,7 @@ Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+f' -PSReadlineChordReversedHistor
 # Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
 
 Function fedora {ssh ares@192.168.119.128}
+Function tremt {ssh root@1.116.216.141}
 Function cfgpwsh {nve $PROFILE}
 Function cfgnvim {nve "$env:LOCALAPPDATA\nvim\init.vim"}
 Function cfgalac {nve "$env:APPDATA\alacritty\alacritty.yml"}

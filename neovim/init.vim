@@ -180,10 +180,10 @@ let g:neoformat_cpp_clangformat={
 let g:neoforat_enabled_cpp=['clangformat']
 let g:neoforat_enabled_c=['clangformat']
 
-augroup fmt
-  autocmd!
-  autocmd BufWritePre * undojoin | Neoformat
-augroup END
+" augroup fmt
+"   autocmd!
+"   autocmd BufWritePre * undojoin | Neoformat
+" augroup END
 
 let mapleader=','
 let @a='"+y'

@@ -28,6 +28,7 @@ Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+f' -PSReadlineChordReversedHistor
 
 Function fedora {ssh ares@192.168.119.128}
 Function tremt {ssh root@1.116.216.141}
+Function tzg {ssh root@124.221.165.148}
 Function cfgpwsh {nve $PROFILE}
 Function cfgnvim {nve "$env:LOCALAPPDATA\nvim\init.vim"}
 Function cfgalac {nve "$env:APPDATA\alacritty\alacritty.yml"}
@@ -55,12 +56,15 @@ Function which ($command) {
         Select-Object -ExpandProperty Path -ErrorAction SilentlyContinue
 }
 Function setproxy {
-    $env:HTTPS_PROXY="http://127.0.0.1:10809"
-    $env:HTTP_PROXY="http://127.0.0.1:10809"
+    $env:HTTPS_PROXY="http://127.0.0.1:7890"
+    $env:HTTP_PROXY="http://127.0.0.1:7890"
 }
 Function unsetproxy {
     $env:HTTPS_PROXY=""
     $env:HTTP_PROXY=""
+}
+Function am {
+    C:\Users\Ares\AppData\Local\Android\Sdk\emulator\emulator.exe -avd "Pixel_4_API_29"
 }
 Set-Alias vim nvim
 Set-Alias tk tokei

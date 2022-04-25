@@ -10,6 +10,7 @@
     "rust-analyzer.checkOnSave.command": "fmt",
     "rust-analyzer.inlayHints.enable": true,
     "rust-analyzer.lens.enable": false,
+    "rust-analyzer.cache.warmup": false,
 	"explorer.icon.enableNerdfont": true,
 	"explorer.file.showHiddenFiles": true,
 	"explorer.width": 30,

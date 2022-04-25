@@ -36,6 +36,7 @@ set selectmode=mouse,key
 set encoding=utf-8
 set ffs=unix,dos,mac
 set termencoding=utf-8
+set guifont=JetBrainsMono\ NF:h13
 
 call plug#begin('~/.vim/plugged')
 Plug 'sheerun/vim-polyglot'
@@ -55,6 +56,8 @@ Plug 'sainnhe/everforest'
 Plug 'voldikss/vim-floaterm'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'tpope/vim-fugitive'
+Plug 'dense-analysis/ale'
+Plug 'bufbuild/vim-buf'
 " Plug 'preservim/nerdtree'
 " Plug 'jiangmiao/auto-pairs'
 call plug#end()
@@ -99,7 +102,6 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
-colorscheme everforest
 " colorscheme gruvbox-material
 
 if has('win32')
@@ -116,6 +118,12 @@ endif
 
 let g:floaterm_width=0.67
 let g:floaterm_height=0.87
+
+let g:ale_linters = {
+\   'proto': ['buf-lint',],
+\}
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_linters_explicit = 1
  
 if has('win32')
   let g:fzf_preview_window=[] " Preview window is broken on windows
@@ -127,8 +135,11 @@ endif
 let g:everforest_background='hard'
 let g:everforest_ui_contrast='high'
 let g:everforest_better_performance=1
+let g:everforest_enable_italic=0
 let g:everforest_disable_italic_comment=1
-"let g:everforest_transparent_background=1
+" let g:everforest_transparent_background=1
+
+colorscheme everforest
 
 " let g:gruvbox_bold=0
 " let g:gruvbox_italic=0
@@ -162,7 +173,8 @@ let g:airline#extensions#tabline#switch_buffers_and_tabs=1
 
 let g:neoformat_cpp_clangformat={
     \ 'exe': 'clang-format',
-    \ 'args': ['-i']}
+    \ 'args': ['-i'],
+\}
 let g:neoforat_enabled_cpp=['clangformat']
 let g:neoforat_enabled_c=['clangformat']
 

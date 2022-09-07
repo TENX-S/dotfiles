@@ -1,11 +1,9 @@
-
-#### FIG ENV VARIABLES ####
-# Please make sure this block is at the start of this file.
-[ -s ~/.fig/shell/pre.sh ] && source ~/.fig/shell/pre.sh
-#### END FIG ENV VARIABLES ####
+# Fig pre block. Keep at the top of this file.
+[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && . "$HOME/.fig/shell/zshrc.pre.zsh"
 # ZSH_DISABLE_COMPFIX="true"
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH="/usr/local/sbin:$PATH"
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -107,9 +105,9 @@ source $ZSH/oh-my-zsh.sh
 alias cal="insect"
 alias tgz="tar -zcvf $1 $2"
 alias dtgz="tar -zxvf $1 $2"
-alias cfgzsh="nve ~/.zshrc&"
-alias cfgnvim="nve ~/.config/nvim/init.vim&"
-alias cfgalac="nve ~/.config/alacritty/alacritty.yml"
+alias cfgzsh="vim ~/.zshrc"
+alias cfgnvim="vim ~/.config/nvim/init.vim"
+alias cfgalac="vim ~/.config/alacritty/alacritty.yml"
 alias restartzsh="source ~/.zshrc"
 alias stenx-s="git config user.name "TENX-S" && git config user.email "ttenx@pm.me""
 alias skallenW="git config user.name "KallenW" && git config user.email "coopersjy@gmail.com""
@@ -125,12 +123,18 @@ alias ll=ll1
 alias vim=nvim
 alias gcc=gcc-11
 
+export NO_PROXY=127.0.0.1,localhost,::1
+
 export GOPROXY=https://goproxy.io,direct
 export BLOG_DIR=$HOME/Documents/Developer/OpenSource/blog
 export SKIA_BINARIES_URL=https://github.91chi.fun//https://github.com/rust-skia/skia-binaries/releases/download/{tag}/skia-binaries-{key}.tar.gz
+export PUB_HOSTED_URL=https://pub.flutter-io.cn
+export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
 
 # Set PATH for _SDK
-export PATH=$PATH:/Users/tenx/_SDK/bin
+export PATH=$PATH:/Users/tenx/_SDK/bin:$HOME/_SDK/grpcui
+
+export PATH=$PATH:/Users/tenx/go/bin
 
 # Set PATH for LaTeX-4.01
 export LTX_PATH="/Lirary/Tex"
@@ -166,7 +170,7 @@ export BAT_THEME="OneHalfDark"
 # Set Rust error message
 export RUST_BACKTRACE=full
 
-export EDITOR=vim
+export EDITOR=nvim
 export RA_HOME=$HOME/_SDK/ra
 
 #autojump setting
@@ -199,8 +203,8 @@ function cleanvcpkg() {
 }
 
 function setproxy() {
-	export http_proxy=http://127.0.0.1:1087
-	export https_proxy=http://127.0.0.1:1087
+	export http_proxy=http://127.0.0.1:7890
+	export https_proxy=http://127.0.0.1:7890
 }
 
 function unsetproxy() {
@@ -208,7 +212,12 @@ function unsetproxy() {
 	export https_proxy=
 }
 
-#### FIG ENV VARIABLES ####
-# Please make sure this block is at the end of this file.
-[ -s ~/.fig/fig.sh ] && source ~/.fig/fig.sh
-#### END FIG ENV VARIABLES ####
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# opam configuration
+[[ ! -r /Users/tenx/.opam/opam-init/init.zsh ]] || source /Users/tenx/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
+
+# Fig post block. Keep at the bottom of this file.
+[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && . "$HOME/.fig/shell/zshrc.post.zsh"

@@ -1,12 +1,45 @@
 {
-	"clangd.checkUpdates": true,
 	"codeLens.enable": true,
-	"rust-analyzer.updates.checkOnStartup": false,
-	"rust-analyzer.cargo.runBuildScripts": true,
+    "clangd.checkUpdates": true,
 	"rust-analyzer.procMacro.enable": true,
-	"rust-analyzer.checkOnSaveCommand": "fmt",
-	"rust-analyzer.server.path": "/Users/tenx/_SDK/ra/rust-analyzer",
+    "rust-analyzer.inlayHints.refreshOnInsertMode": true,
+    "rust-analyzer.updates.checkOnStartup": false,
+    // "rust-analyzer.checkOnSave.command": "fmt",
+    "rust-analyzer.server.path": "/Users/tenx/_SDK/ra/rust-analyzer",
+    "rust-analyzer.trace.server": "verbose",
+    "rust-analyzer.inlayHints.enable": true,
 	"explorer.icon.enableNerdfont": true,
-	"explorer.file.showHiddenFiles": true
-}
+	"explorer.file.showHiddenFiles": true,
+	"explorer.width": 30,
+	"explorer.keyMappings.global": {
+        "s": "toggleSelection",
+        "<tab>": "actionMenu",
 
+        "h": "indentPrev",
+        "l": "indentNext",
+        "o": ["expandable?", ["expanded?", "collapse", "expand"], "open"],
+        "<cr>": "open",
+        "t": "open:tab",
+        "<bs>": "gotoParent",
+
+        "Y": "copyFilepath",
+        "y": "copyFilename",
+        "c": "copyFile",
+        "x": "cutFile",
+        "p": "pasteFile",
+        "d": "delete",
+        "D": "deleteForever",
+
+        "a": "addFile",
+        "A": "addDirectory",
+        "r": "rename",
+
+        ".": "toggleHidden",
+        "R": "refresh",
+        "<C-p>": "preview",
+
+        "?": "help",
+        "<esc>": "esc",
+        "e": "systemExecute"
+    }
+}

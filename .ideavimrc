@@ -1,0 +1,9 @@
+let mapleader=','
+nmap <leader>s :w!<cr>
+nmap <leader>h :noh<cr>
+nmap <leader>q :xa<cr>
+nmap <leader>x :x<cr>
+nmap <leader>w :bn<cr>
+nmap <leader>p :bp<cr>
+
+inoremap ff <Esc>`^

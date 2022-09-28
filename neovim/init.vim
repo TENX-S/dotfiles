@@ -35,7 +35,7 @@ set selectmode=mouse,key
 set encoding=utf-8
 set ffs=unix,dos,mac
 set termencoding=utf-8
-set guifont=RecMonoLinear\ NF:h18
+set guifont=RecMonoLinear\ NF:h17
 
 call plug#begin('~/.vim/plugged')
 Plug 'sheerun/vim-polyglot'
@@ -54,7 +54,28 @@ Plug 'andymass/vim-matchup'
 Plug 'sainnhe/everforest'
 Plug 'voldikss/vim-floaterm'
 Plug 'lukas-reineke/indent-blankline.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'romgrk/barbar.nvim'
 call plug#end()
+
+" Move to previous/next
+nnoremap <silent> <D-,> <Cmd>BufferPrevious<CR>
+nnoremap <silent> <D-.> <Cmd>BufferNext<CR>
+
+" Goto buffer in position...
+nnoremap <silent> <D-1> <Cmd>BufferGoto 1<CR>
+nnoremap <silent> <D-2> <Cmd>BufferGoto 2<CR>
+nnoremap <silent> <D-3> <Cmd>BufferGoto 3<CR>
+nnoremap <silent> <D-4> <Cmd>BufferGoto 4<CR>
+nnoremap <silent> <D-5> <Cmd>BufferGoto 5<CR>
+nnoremap <silent> <D-6> <Cmd>BufferGoto 6<CR>
+nnoremap <silent> <D-7> <Cmd>BufferGoto 7<CR>
+nnoremap <silent> <D-8> <Cmd>BufferGoto 8<CR>
+nnoremap <silent> <D-9> <Cmd>BufferGoto 9<CR>
+nnoremap <silent> <D-0> <Cmd>BufferLast<CR>
+
+" Close Buffer
+nnoremap <silent> <D-c> <Cmd>BufferClose<CR>
 
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
@@ -161,8 +182,8 @@ colorscheme everforest
 
 let g:neovide_no_idle=v:true
 " let g:neovide_transparency=0.7
-let g:neovide_refresh_rate=360
-let g:neovide_fullscreen=v:false
+let g:neovide_refresh_rate=60
+let g:neovide_fullscreen=v:true
 let g:neovide_cursor_antialiasing=v:false
 let g:neovide_cursor_vfx_mode="torpedo"
 let g:neovide_remember_window_size=v:true
@@ -204,8 +225,8 @@ nmap <leader>q :xa<cr>
 nmap <leader>x :x<cr>
 nmap <leader>sv :source $MYVIMRC<cr>
 nmap <leader>cg :edit $MYVIMRC<cr>
-nmap <leader>w :bn<cr>
-nmap <leader>p :bp<cr>
+"nmap <leader>w :bn<cr>
+"nmap <leader>p :bp<cr>
 nmap <leader>f :Files<cr>
 nmap <leader>rn <Plug>(coc-rename)
 nmap <leader>ya @y<cr> 

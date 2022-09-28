@@ -35,3 +35,5 @@
 [diff]
     colorMoved = default
 
+[url "ssh://git@gitee.com/"]
+	insteadOf = https://gitee.com/

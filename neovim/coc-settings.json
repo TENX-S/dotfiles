@@ -1,7 +1,7 @@
 {
     "suggest.completionItemKindLabels": {
 		"variable": "\uf71b",
-    	"constant": "\uf8ff",
+    	"constant": "\u274f",
     	"struct": "\ufb44",
     	"class": "\uf0e8",
     	"interface": "\ufa52",
@@ -27,11 +27,7 @@
 		"module": "\uf668",
 		"default": "\uf29c"
 	},
-    "suggest.formatItems": [
-        "abbr",
-        "menu",
-        "kind"
-    ],
+    "suggest.formatItems": ["kind","abbr","menu"],
 	"codeLens.enable": true,
 	"rust-analyzer.procMacro.enable": true,
     "rust-analyzer.updates.checkOnStartup": false,

@@ -155,6 +155,10 @@ endif
 " let g:NERDTreeWinPos="right"
 " let NERDTreeShowHidden=1
 
+let bufferline = get(g:, 'bufferline', {})
+let bufferline.animation=v:false
+let bufferline.closable=v:false
+
 let g:floaterm_width=0.67
 let g:floaterm_height=0.87
  
@@ -282,3 +286,4 @@ require("indent_blankline").setup {
     show_current_context_start=true,
 }
 EOF
+

@@ -9,6 +9,11 @@ registry = "sparse+https://rsproxy.cn/index/"
 
 [registries.rsproxy]
 index = "https://rsproxy.cn/crates.io-index"
+protocol = "sparse"
 
 [net]
 git-fetch-with-cli = true
+
+
+# [registries.crates-io]
+# protocol = "sparse"

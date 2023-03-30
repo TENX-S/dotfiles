@@ -20,8 +20,9 @@
 	ck = cherry-pick
 
 [core]
-	editor = neovide --nofork
+	editor = zed --wait
     pager = delta
+	excludesfile = /Users/ares/.gitignore_global
 
 [interactive]
     diffFilter = delta --color-only

@@ -35,7 +35,8 @@ set selectmode=mouse,key
 set encoding=utf-8
 set ffs=unix,dos,mac
 set termencoding=utf-8
-set guifont=RecMonoLinear\ NF:h17
+" set guifont=RecMonoLinear\ NF:h17
+set guifont=GoMono\ Nerd\ Font\ Mono:h18
 
 call plug#begin('~/.vim/plugged')
 Plug 'sheerun/vim-polyglot'
@@ -56,6 +57,10 @@ Plug 'voldikss/vim-floaterm'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'romgrk/barbar.nvim'
+Plug 'rbjorklin/symbols-outline.nvim', {'branch': 'fix-outline-detection'}
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'imsnif/kdl.vim'
+Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 call plug#end()
 
 " Move to previous/next
@@ -175,7 +180,8 @@ let g:everforest_disable_italic_comment=1
 let g:everforest_transparent_background=0
 
 " colorscheme gruvbox-material
-colorscheme everforest
+" colorscheme everforest
+colorscheme catppuccin-latte
 
 " let g:gruvbox_bold=0
 " let g:gruvbox_italic=0
@@ -184,17 +190,19 @@ colorscheme everforest
 " let g:gruvbox_italicize_comments=0
 " let g:gruvbox_contrast_light="soft"
 
-let g:neovide_no_idle=v:true
+let g:neovide_no_idle=v:false
+let g:neovide_profiler = v:false
 " let g:neovide_transparency=0.7
-let g:neovide_refresh_rate=60
+let g:neovide_refresh_rate=70
 let g:neovide_fullscreen=v:true
 let g:neovide_cursor_antialiasing=v:false
 let g:neovide_cursor_vfx_mode="torpedo"
-let g:neovide_remember_window_size=v:true
+" let g:neovide_remember_window_size=v:true
 
 " let g:airline_theme='violet'
 " let g:airline_theme='gruvbox_material'
-let g:airline_theme='everforest'
+" let g:airline_theme='everforest'
+let g:airline_theme='catppuccin'
 let g:airline#extensions#coc#enabled=0
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#coc#error_symbol='Error:'
@@ -235,12 +243,13 @@ nmap <leader>f :Files<cr>
 nmap <leader>rn <Plug>(coc-rename)
 nmap <leader>ya @y<cr> 
 nmap <leader>ap @p<cr>
+nmap <leader>m :SymbolsOutlineOpen<cr>
 nmap <space><C-y> @a<cr> 
 nmap <space><C-p> @b<cr> 
 nmap <space>e :CocCommand explorer --preset right<cr>
 nmap <space><C-f> :CocCommand explorer --preset floating<cr>
-nmap <space>t :FloatermNew<cr>
-nmap <space><C-t> :FloatermToggle<cr>
+nmap <space>t :FloatermToggle<cr>
+nmap <leader>t :FloaternNew<cr>
 inoremap ff <Esc>`^
 tnoremap <Esc> <C-\><C-n>:FloatermToggle<CR>
 
@@ -285,5 +294,70 @@ require("indent_blankline").setup {
     show_current_context=true,
     show_current_context_start=true,
 }
+EOF
+
+lua <<EOF
+local opts = {
+  highlight_hovered_item = true,
+  show_guides = true,
+  auto_preview = false,
+  position = 'right',
+  relative_width = true,
+  width = 25,
+  auto_close = false,
+  show_numbers = false,
+  show_relative_numbers = false,
+  show_symbol_details = true,
+  preview_bg_highlight = 'Pmenu',
+  autofold_depth = nil,
+  auto_unfold_hover = true,
+  fold_markers = { '', '' },
+  wrap = false,
+  keymaps = { -- These keymaps can be a string or a table for multiple keys
+    close = {"<Esc>", "q"},
+    goto_location = "<Cr>",
+    focus_location = "o",
+    hover_symbol = "<C-space>",
+    toggle_preview = "K",
+    rename_symbol = "r",
+    code_actions = "a",
+    fold = "h",
+    unfold = "l",
+    fold_all = "W",
+    unfold_all = "E",
+    fold_reset = "R",
+  },
+  lsp_blacklist = {},
+  symbol_blacklist = {},
+  symbols = {
+    File = {icon = "", hl = "TSURI"},
+    Module = {icon = "", hl = "TSNamespace"},
+    Namespace = {icon = "", hl = "TSNamespace"},
+    Package = {icon = "", hl = "TSNamespace"},
+    Class = {icon = "𝓒", hl = "TSType"},
+    Method = {icon = "ƒ", hl = "TSMethod"},
+    Property = {icon = "", hl = "TSMethod"},
+    Field = {icon = "", hl = "TSField"},
+    Constructor = {icon = "", hl = "TSConstructor"},
+    Enum = {icon = "ℰ", hl = "TSType"},
+    Interface = {icon = "ﰮ", hl = "TSType"},
+    Function = {icon = "", hl = "TSFunction"},
+    Variable = {icon = "", hl = "TSConstant"},
+    Constant = {icon = "", hl = "TSConstant"},
+    String = {icon = "𝓐", hl = "TSString"},
+    Number = {icon = "#", hl = "TSNumber"},
+    Boolean = {icon = "⊨", hl = "TSBoolean"},
+    Array = {icon = "", hl = "TSConstant"},
+    Object = {icon = "⦿", hl = "TSType"},
+    Key = {icon = "🔐", hl = "TSType"},
+    Null = {icon = "NULL", hl = "TSType"},
+    EnumMember = {icon = "", hl = "TSField"},
+    Struct = {icon = "𝓢", hl = "TSType"},
+    Event = {icon = "🗲", hl = "TSType"},
+    Operator = {icon = "+", hl = "TSOperator"},
+    TypeParameter = {icon = "𝙏", hl = "TSParameter"}
+  }
+}
+require("symbols-outline").setup(opts)
 EOF
 

@@ -5,5 +5,9 @@ nmap <leader>q :xa<cr>
 nmap <leader>x :x<cr>
 nmap <leader>w :bn<cr>
 nmap <leader>p :bp<cr>
+nmap <C-p> :NERDTree<cr>
 
 inoremap ff <Esc>`^
+
+Plug 'preservim/nerdtree'
+Plug 'tpope/vim-surround'

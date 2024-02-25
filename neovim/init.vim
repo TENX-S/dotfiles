@@ -35,8 +35,8 @@ set selectmode=mouse,key
 set encoding=utf-8
 set ffs=unix,dos,mac
 set termencoding=utf-8
-" set guifont=RecMonoLinear\ NF:h17
-set guifont=GoMono\ Nerd\ Font\ Mono:h18
+set guifont=Berkeley\ Mono:h18
+" set guifont=PragmataProMono\ Nerd\ Font:h20
 
 call plug#begin('~/.vim/plugged')
 Plug 'sheerun/vim-polyglot'
@@ -59,6 +59,7 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'romgrk/barbar.nvim'
 Plug 'rbjorklin/symbols-outline.nvim', {'branch': 'fix-outline-detection'}
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/playground'
 Plug 'imsnif/kdl.vim'
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 call plug#end()
@@ -160,9 +161,17 @@ endif
 " let g:NERDTreeWinPos="right"
 " let NERDTreeShowHidden=1
 
-let bufferline = get(g:, 'bufferline', {})
-let bufferline.animation=v:false
-let bufferline.closable=v:false
+" let bufferline = get(g:, 'bufferline', {})
+" let bufferline.animation=v:false
+" let bufferline.closable=v:false
+
+lua <<EOF
+vim.g.barbar_auto_setup = true
+
+require('barbar').setup {
+  animation = false,
+}
+EOF
 
 let g:floaterm_width=0.67
 let g:floaterm_height=0.87
@@ -173,15 +182,15 @@ if has('win32')
 endif
 
 " let g:gruvbox_material_background='soft'
-let g:everforest_background='hard'
+let g:everforest_background='medium'
 let g:everforest_ui_contrast='high'
 let g:everforest_better_performance=1
 let g:everforest_disable_italic_comment=1
 let g:everforest_transparent_background=0
 
 " colorscheme gruvbox-material
-" colorscheme everforest
-colorscheme catppuccin-latte
+colorscheme everforest
+" colorscheme catppuccin-latte
 
 " let g:gruvbox_bold=0
 " let g:gruvbox_italic=0
@@ -201,8 +210,8 @@ let g:neovide_cursor_vfx_mode="torpedo"
 
 " let g:airline_theme='violet'
 " let g:airline_theme='gruvbox_material'
-" let g:airline_theme='everforest'
-let g:airline_theme='catppuccin'
+let g:airline_theme='everforest'
+" let g:airline_theme='catppuccin'
 let g:airline#extensions#coc#enabled=0
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#coc#error_symbol='Error:'
